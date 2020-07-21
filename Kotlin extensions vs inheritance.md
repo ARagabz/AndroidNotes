@@ -2,9 +2,9 @@ Kotlin Extensions vs Inheritance
 =====
 
 
-we usually use inheritance in our code as it is **OOP** concept. we use this concept to extend classes and add feature or properties to the class.
+we usually use inheritance in our code as it is **OOP** concept. we use this concept to extend classes and add features or properties to the class.
 
-There is another concept in new programming language like **Kotlin** called **extension** which can add functionality to class without extending it
+There is another concept in a new programming language like **Kotlin** called **extension** which can add functionality to a class without extending it
 
 Inheritance
 ----
@@ -34,7 +34,7 @@ and we can call it
     println(car.getDetails())
 ```
 > ## Inheritance Notes:
-> - can add properties and override function of the base class (***non final class***)
+> - can add properties and override function of the base class (*** nonfinal class***)
 > - you can access properties and functions from Base class
 
 Extensions
@@ -83,4 +83,26 @@ fun callFunction(base: BaseClass) {
 
 callFunction(DerivedClass())
 ```
-> this callFunction wll print ```BaseClass.doSomething``` because the reference for this function from type base class not the derived and it is different than the inheritance which is resolved by runtime **Polymorphism**
+> this callFunction will print ```BaseClass.doSomething``` because of the reference for this function from type base class not the derived and it is different than the inheritance which is resolved by runtime **Polymorphism** so extension function will effect on compile-time not run time.
+
+> if we added extension function to class and we created many objects from this class, we already have this function inside all objects we created and this is why we use extensions, we want to add function to class without edit it or extend. for example, when we develop for android we use libraries that we don't have source code to edit any class and new functionality. so the solution is to use the extension.
+> examples: 
+> ```View.hide()``` , 
+> ```Context.doSomeThing()```
+> we use it to add the boilerplate code to the class once and use it everywhere.
+
+
+Extensions functions are often described as being similar to static utils classes as many java codebases. let's have an example: what if we want to reverse string, we will do this using static methods like ```StringUtils.reverse(string: String)``` in kotlin using extension function could be written as ```String.reverse()```
+to use examples:
+> ```StringUtils.reverse("Ahmed")```
+
+or
+> ```"Ahmed".reverse()```
+
+### Extension vs Class Method
+> it is different than Class method as it is used at the runtime and also create an object in the heap and execute the function and it retained from the memory after it finishes its execution
+
+### Extension usage:
+- used for clean code and scalability 
+- improving the readability of code itself
+- converting object to another
